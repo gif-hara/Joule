@@ -25,5 +25,10 @@ namespace Joule.CharacterControllers
                 }
             }
         }
+
+        public void Attach(Character character)
+        {
+            this.character = character;
+        }
     }
 }

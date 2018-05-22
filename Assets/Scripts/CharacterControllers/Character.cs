@@ -25,9 +25,12 @@ namespace Joule.CharacterControllers
                 return broker;
             }
         }
+        
+        public Transform CachedTransform { get; private set; }
 
         void Awake()
         {
+            this.CachedTransform = this.transform;
             this.Status = new CharacterStatus();
             
             HK.Framework.EventSystems.Broker.Global.Receive<Died>()

@@ -1,4 +1,7 @@
-﻿using Joule.GameSystems;
+﻿using HK.Framework.EventSystems;
+using Joule.Events.CharacterControllers;
+using Joule.GameSystems;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -28,6 +31,18 @@ namespace Joule.CameraControllers
 
         private Vector3 chaseTrackVelocity;
 
+        void Awake()
+        {
+            Broker.Global.Receive<PlayerSpawned>()
+                .Take(1)
+                .SubscribeWithState(this, (x, _this) =>
+                {
+                    _this.track = x.Player.CachedTransform;
+                    _this.cameraman.Root.position = _this.track.position;
+                })
+                .AddTo(this);
+        }
+
         void Update()
         {
             this.ChaseTrack();
@@ -41,7 +56,7 @@ namespace Joule.CameraControllers
                 return;
             }
 
-            this.cameraman.Root.localPosition = Vector3.SmoothDamp(
+            this.cameraman.Root.position = Vector3.SmoothDamp(
                 this.cameraman.Root.localPosition,
                 this.track.position,
                 ref this.chaseTrackVelocity,
