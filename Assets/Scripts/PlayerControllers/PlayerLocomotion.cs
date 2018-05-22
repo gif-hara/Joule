@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Joule.GameSystems;
+using UnityEngine;
 using UnityEngine.Assertions;
 using Input = Joule.GameSystems.Input;
 
@@ -25,7 +26,7 @@ namespace Joule.PlayerControllers
         void Update()
         {
             var velocity =
-                (this.cachedTransform.forward * Input.Vertical + this.cachedTransform.right * Input.Horizontal)
+                (ThirdPersonUtility.Forward * Input.Vertical + ThirdPersonUtility.Right * Input.Horizontal)
                 .normalized;
 
             this.characterController.SimpleMove(velocity * speed * Time.deltaTime);

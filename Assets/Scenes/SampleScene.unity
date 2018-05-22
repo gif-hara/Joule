@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterController: {fileID: 700022793}
-  speed: 100
+  speed: 500
 --- !u!1 &849160499
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +745,6 @@ GameObject:
   - component: {fileID: 1032652333}
   - component: {fileID: 1032652336}
   - component: {fileID: 1032652335}
-  - component: {fileID: 1032652334}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -766,18 +765,6 @@ Transform:
   m_Father: {fileID: 2110913999}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1032652334
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1032652332}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1032652335
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -860,8 +847,8 @@ GameObject:
   - component: {fileID: 1671439882}
   - component: {fileID: 1671439881}
   m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
+  m_Name: Main Camera
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -988,7 +975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraman: {fileID: 1698670822}
   track: {fileID: 700022794}
-  chaseTrackSmoothTime: 100
+  chaseTrackSmoothTime: 10
   pivotSpeed: 100
 --- !u!43 &1726413673
 Mesh:
