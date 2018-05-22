@@ -27,6 +27,8 @@ namespace Joule.CharacterControllers
         {
             var t = this.transform;
             var character = Instantiate(this.character);
+            character.CachedTransform.position = t.position;
+            character.CachedTransform.rotation = t.rotation;
             Instantiate(this.model, character.CachedTransform);
             Instantiate(this.muzzleController, character.CachedTransform).Attach(character);
             Instantiate(this.cameraController);
