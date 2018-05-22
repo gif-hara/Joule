@@ -1,4 +1,5 @@
 ﻿using Joule.CharacterControllers;
+using Joule.Events.BulletControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -40,6 +41,14 @@ namespace Joule.BulletControllers
         
         private void OnTriggerEnter(Collider other)
         {
+            var character = other.GetComponentInParent<Character>();
+
+            if (character == null)
+            {
+                return;
+            }
+            
+            character.Broker.Publish(HitBullet.Get(this));
         }
     }
 }
