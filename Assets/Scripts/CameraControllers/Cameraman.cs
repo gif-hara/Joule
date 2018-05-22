@@ -30,7 +30,28 @@ namespace Joule.CameraControllers
         {
             get { return controlledCamera; }
         }
-        
-        
+
+        [SerializeField]
+        private float pitchMax;
+
+        [SerializeField]
+        private float pitchMin;
+
+        public void SetPivot(float yaw, float pitch)
+        {
+            this.pivot.localRotation = Quaternion.Euler(
+                Mathf.Clamp(pitch, this.pitchMin, this.pitchMax),
+                yaw,
+                0.0f
+                );
+        }
+
+        public void AddPivot(float yaw, float pitch)
+        {
+            var euler = this.pivot.localRotation.eulerAngles;
+            euler.y += yaw;
+            euler.x = Mathf.Clamp(euler.x + pitch, this.pitchMin, this.pitchMax);
+            this.pivot.localRotation = Quaternion.Euler(euler);
+        }
     }
 }

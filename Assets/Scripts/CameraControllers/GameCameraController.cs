@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Assertions;
+using Input = Joule.GameSystems.Input;
 
 namespace Joule.CameraControllers
 {
@@ -22,11 +23,15 @@ namespace Joule.CameraControllers
         [SerializeField]
         private float chaseTrackSmoothTime;
 
+        [SerializeField]
+        private float pivotSpeed;
+
         private Vector3 chaseTrackVelocity;
 
         void Update()
         {
             this.ChaseTrack();
+            this.UpdatePivot();
         }
 
         private void ChaseTrack()
@@ -42,6 +47,12 @@ namespace Joule.CameraControllers
                 ref this.chaseTrackVelocity,
                 this.chaseTrackSmoothTime * Time.deltaTime
             );
+        }
+
+        private void UpdatePivot()
+        {
+            var pivot = new Vector2(Input.MouseX, Input.MouseY).normalized * this.pivotSpeed * Time.deltaTime;
+            this.cameraman.AddPivot(pivot.x, pivot.y);
         }
     }
 }

@@ -17,5 +17,15 @@ namespace Joule.GameSystems
         {
             get { return UnityEngine.Input.GetAxis("Vertical"); }
         }
+
+        public static float MouseX
+        {
+            get { return UnityEngine.Input.GetAxis("Mouse X"); }
+        }
+
+        public static float MouseY
+        {
+            get { return UnityEngine.Input.GetAxis("Mouse Y"); }
+        }
     }
 }
