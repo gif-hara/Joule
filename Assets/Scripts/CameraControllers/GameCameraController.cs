@@ -1,6 +1,6 @@
-﻿using UnityEngine;
+﻿using Joule.GameSystems;
+using UnityEngine;
 using UnityEngine.Assertions;
-using Input = Joule.GameSystems.Input;
 
 namespace Joule.CameraControllers
 {
@@ -51,7 +51,7 @@ namespace Joule.CameraControllers
 
         private void UpdatePivot()
         {
-            var pivot = new Vector2(Input.MouseX, Input.MouseY).normalized * this.pivotSpeed * Time.deltaTime;
+            var pivot = new Vector2(Input.GetAxis(ButtonNames.MouseX), Input.GetAxis(ButtonNames.MouseY)).normalized * this.pivotSpeed * Time.deltaTime;
             this.cameraman.AddPivot(pivot.x, pivot.y);
         }
     }
