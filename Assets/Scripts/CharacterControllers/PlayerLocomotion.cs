@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using Input = Joule.GameSystems.Input;
 
-namespace Joule.PlayerControllers
+namespace Joule.CharacterControllers
 {
     /// <summary>
     /// プレイヤーの移動を制御する
