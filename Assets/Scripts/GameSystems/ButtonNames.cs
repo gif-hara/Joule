@@ -2,14 +2,14 @@
 {
     public static class ButtonNames
     {
-        public const string Horizontal = "Horizontal";
+        public const string MoveHorizontal = "Move Horizontal";
 
-        public const string Vertical = "Vertical";
+        public const string MoveVertical = "Move Vertical";
 
-        public const string MouseX = "Mouse X";
+        public const string CameraHorizontal = "Camera Horizontal";
 
-        public const string MouseY = "Mouse Y";
+        public const string CameraVertical = "Camera Vertical";
 
-        public const string Fire1 = "Fire1";
+        public const string Fire = "Fire";
     }
 }

@@ -25,7 +25,7 @@ namespace Joule.CharacterControllers
         void Update()
         {
             var velocity =
-                (ThirdPersonUtility.Forward * Input.GetAxis(ButtonNames.Vertical) + ThirdPersonUtility.Right * Input.GetAxis(ButtonNames.Horizontal))
+                (ThirdPersonUtility.Forward * Input.GetAxis(ButtonNames.MoveVertical) + ThirdPersonUtility.Right * Input.GetAxis(ButtonNames.MoveHorizontal))
                 .normalized;
 
             this.characterController.SimpleMove(velocity * speed * Time.deltaTime);

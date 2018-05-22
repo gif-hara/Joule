@@ -17,7 +17,7 @@ namespace Joule.CharacterControllers
 
         void Update()
         {
-            if (Input.GetButtonDown(ButtonNames.Fire1))
+            if (Input.GetButtonDown(ButtonNames.Fire))
             {
                 foreach (var muzzleController in this.muzzleControllers)
                 {
