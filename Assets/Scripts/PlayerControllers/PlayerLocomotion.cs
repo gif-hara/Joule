@@ -30,6 +30,10 @@ namespace Joule.PlayerControllers
                 .normalized;
 
             this.characterController.SimpleMove(velocity * speed * Time.deltaTime);
+            if (velocity.sqrMagnitude > 0.0f)
+            {
+                this.cachedTransform.forward = velocity;
+            }
         }
     }
 }
