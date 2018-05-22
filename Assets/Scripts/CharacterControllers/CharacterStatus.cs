@@ -9,5 +9,20 @@ namespace Joule.CharacterControllers
     public sealed class CharacterStatus
     {
         public int HitPoint;
+
+        public CharacterStatus()
+        {
+            this.HitPoint = 1;
+        }
+
+        public CharacterStatus(CharacterStatus other)
+        {
+            this.HitPoint = other.HitPoint;
+        }
+
+        public bool IsDead
+        {
+            get { return this.HitPoint <= 0; }
+        }
     }
 }

@@ -17,7 +17,18 @@ namespace Joule.BulletControllers
         private float moveSpeed;
 
         [SerializeField]
-        private float damage;
+        private int damage;
+        public int Damage
+        {
+            get { return damage; }
+            set { damage = value; }
+        }
+
+        /// <summary>
+        /// 貫通できる回数
+        /// </summary>
+        [SerializeField]
+        private int penetration;
 
         private Character owner;
 
@@ -49,6 +60,11 @@ namespace Joule.BulletControllers
             }
             
             character.Broker.Publish(HitBullet.Get(this));
+            this.penetration--;
+            if (this.penetration <= 0)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }
