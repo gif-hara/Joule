@@ -21,7 +21,6 @@ namespace Joule.GameSystems
         private static void OnBeforeSceneLoad()
         {
             Instance = Resources.Load<Options>("BootSystems/Options");
-            Debug.Log(Instance);
         }
     }
 }
