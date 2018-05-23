@@ -96,3 +96,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 114617730289114236, guid: 2ad7f0d1b909f47d8a6a5c1bdd3eb85b, type: 2}
+  coolTime: 1
