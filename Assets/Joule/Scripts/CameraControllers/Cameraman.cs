@@ -40,26 +40,27 @@ namespace Joule.CameraControllers
         [SerializeField]
         private float pitchSmoothTime;
 
+        [SerializeField]
+        private float dollySmoothTime;
+
         private Vector3 targetPivot;
 
         private Vector3 pivotVelocity;
 
+        private float targetDolly;
+
+        private float dollyVelocity;
+
         void Awake()
         {
             this.targetPivot = this.pivot.localRotation.eulerAngles;
+            this.targetDolly = this.dolly.localPosition.z;
         }
 
         void Update()
         {
-            var r = this.pivot.localRotation.eulerAngles;
-            var t = this.pitchSmoothTime * Time.deltaTime;
-            this.pivot.localRotation = Quaternion.Euler(
-                new Vector3(
-                    Mathf.SmoothDampAngle(r.x, this.targetPivot.x, ref this.pivotVelocity.x, t),
-                    Mathf.SmoothDampAngle(r.y, this.targetPivot.y, ref this.pivotVelocity.y, t),
-                    Mathf.SmoothDampAngle(r.z, this.targetPivot.z, ref this.pivotVelocity.z, t)
-                    )
-            );
+            this.UpdatePivot();
+            this.UpdateDolly();
         }
 
         public void SetPivot(float pitch, float yaw)
@@ -83,6 +84,31 @@ namespace Joule.CameraControllers
         private void ClampPitch()
         {
             this.targetPivot.x = Mathf.Clamp(this.targetPivot.x, this.pitchMin, this.pitchMax);
+        }
+
+        private void UpdatePivot()
+        {
+            var r = this.pivot.localRotation.eulerAngles;
+            var t = this.pitchSmoothTime * Time.deltaTime;
+            this.pivot.localRotation = Quaternion.Euler(
+                new Vector3(
+                    Mathf.SmoothDampAngle(r.x, this.targetPivot.x, ref this.pivotVelocity.x, t),
+                    Mathf.SmoothDampAngle(r.y, this.targetPivot.y, ref this.pivotVelocity.y, t),
+                    Mathf.SmoothDampAngle(r.z, this.targetPivot.z, ref this.pivotVelocity.z, t)
+                )
+            );
+        }
+
+        public void SetDolly(float dolly)
+        {
+            this.targetDolly = -dolly;
+        }
+
+        private void UpdateDolly()
+        {
+            var pos = this.dolly.localPosition;
+            pos.z = Mathf.SmoothDamp(pos.z, this.targetDolly, ref this.dollyVelocity, this.dollySmoothTime * Time.deltaTime);
+            this.dolly.localPosition = pos;
         }
     }
 }

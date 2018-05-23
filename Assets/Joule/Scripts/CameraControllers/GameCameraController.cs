@@ -2,6 +2,7 @@
 using Joule.Events.CharacterControllers;
 using Joule.GameSystems;
 using UniRx;
+using UniRx.Triggers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -26,17 +27,35 @@ namespace Joule.CameraControllers
         [SerializeField]
         private float chaseTrackSmoothTime;
 
+        [SerializeField]
+        private float defaultDolly;
+
+        [SerializeField]
+        private float lockonDolly;
+
+        [SerializeField]
+        private LayerMask backCheckLayer;
+
+        [SerializeField]
+        private float lockonTrackOffsetX;
+
+        [SerializeField]
+        private float lockonTrackOffsetXThreshold;
+
         private Vector3 chaseTrackVelocity;
 
         private Vector3 pivotVelocity;
 
+        private float currentLockonTrackOffsetX;
+
         void Awake()
         {
+            this.currentLockonTrackOffsetX = this.lockonTrackOffsetX;
             Broker.Global.Receive<PlayerSpawned>()
                 .Take(1)
                 .SubscribeWithState(this, (x, _this) =>
                 {
-                    _this.track = x.Player.CachedTransform;
+                    _this.CreateTrack(x.Player.CachedTransform);
                     _this.cameraman.Root.position = _this.track.position;
                 })
                 .AddTo(this);
@@ -46,6 +65,8 @@ namespace Joule.CameraControllers
         {
             this.ChaseTrack();
             this.UpdatePivot();
+            this.UpdateDolly();
+            this.UpdateLockonTrackOffsetX();
         }
 
         private void ChaseTrack()
@@ -93,6 +114,49 @@ namespace Joule.CameraControllers
 
             var yaw = this.track.rotation.eulerAngles.y;
             this.cameraman.SetPivotYaw(yaw);
+        }
+
+        private void UpdateDolly()
+        {
+            var lockon = Input.GetButton(ButtonNames.Lockon);
+            this.cameraman.SetDolly(lockon ? this.lockonDolly : this.defaultDolly);
+        }
+
+        private void UpdateLockonTrackOffsetX()
+        {
+            var horizontal = Input.GetAxis(ButtonNames.CameraHorizontal);
+            if (Mathf.Approximately(horizontal, 0.0f))
+            {
+                return;
+            }
+
+            if (this.lockonTrackOffsetXThreshold > Mathf.Abs(horizontal))
+            {
+                return;
+            }
+            
+            horizontal = Mathf.Sign(horizontal);
+
+            this.currentLockonTrackOffsetX = this.lockonTrackOffsetX * horizontal;
+        }
+
+        private void CreateTrack(Transform original)
+        {
+            this.track = new GameObject("GameCameraTrack").transform;
+            this.LateUpdateAsObservable()
+                .Where(_ => this.isActiveAndEnabled)
+                .SubscribeWithState2(this, original, (_, _this, o) =>
+                {
+                    var pos = o.position;
+                    var lockon = Input.GetButton(ButtonNames.Lockon);
+                    if (lockon)
+                    {
+                        pos += o.right * _this.currentLockonTrackOffsetX;
+                    }
+                    _this.track.position = pos;
+                    _this.track.rotation = o.rotation;
+                })
+                .AddTo(this);
         }
     }
 }

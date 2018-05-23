@@ -229,7 +229,7 @@ MonoBehaviour:
   duration: 1.5
   moveSpeed: 50
   damage: 1
-  penetration: -1
+  penetration: 1
 --- !u!135 &135574030069309536
 SphereCollider:
   m_ObjectHideFlags: 1

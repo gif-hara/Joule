@@ -96,14 +96,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1425212663188122}
-  m_LocalRotation: {x: -0.08715578, y: 0, z: 0, w: 0.9961947}
+  m_LocalRotation: {x: -0.17364825, y: 0, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4829794592914176}
   m_Father: {fileID: 4494244513957182}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -20, y: 0, z: 0}
 --- !u!4 &4267008878377546
 Transform:
   m_ObjectHideFlags: 1
@@ -220,6 +220,13 @@ MonoBehaviour:
   cameraman: {fileID: 114429379273947830}
   track: {fileID: 0}
   chaseTrackSmoothTime: 10
+  defaultDolly: 10
+  lockonDolly: 5
+  backCheckLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  lockonTrackOffsetX: 2
+  lockonTrackOffsetXThreshold: 0.9
 --- !u!114 &114429379273947830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,5 +244,6 @@ MonoBehaviour:
   rig: {fileID: 4250279106620662}
   controlledCamera: {fileID: 20364295089288604}
   pitchMax: 75
-  pitchMin: 5
+  pitchMin: -30
   pitchSmoothTime: 10
+  dollySmoothTime: 10
