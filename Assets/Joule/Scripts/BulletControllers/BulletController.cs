@@ -60,9 +60,10 @@ namespace Joule.BulletControllers
             var instance = pool.Rent();
             instance.pool = pool;
             instance.owner = owner;
-            Observable.Timer(TimeSpan.FromSeconds(this.duration))
+            Observable.Timer(TimeSpan.FromSeconds(instance.duration))
+                .TakeUntilDisable(instance)
                 .SubscribeWithState(instance, (_, _this) => _this.pool.Return(_this))
-                .AddTo(this);
+                .AddTo(instance);
 
             return instance;
         }
