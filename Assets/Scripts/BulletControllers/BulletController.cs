@@ -59,9 +59,21 @@ namespace Joule.BulletControllers
 
             if (character == null)
             {
+                this.OnCollideOther();
                 return;
             }
-            
+
+            if (this.owner.gameObject.layer != character.gameObject.layer)
+            {
+                this.OnCollideOpponent(character);
+            }
+        }
+
+        /// <summary>
+        /// 敵対するオブジェクトと衝突した際の処理
+        /// </summary>
+        private void OnCollideOpponent(Character character)
+        {
             character.Broker.Publish(HitBullet.Get(this));
             
             if (this.penetration != -1)
@@ -72,6 +84,14 @@ namespace Joule.BulletControllers
                     Destroy(this.gameObject);
                 }
             }
+        }
+
+        /// <summary>
+        /// 何かしらのオブジェクトと衝突した際の処理
+        /// </summary>
+        private void OnCollideOther()
+        {
+            
         }
     }
 }

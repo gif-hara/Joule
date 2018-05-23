@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1.5
-  moveSpeed: 100
+  moveSpeed: 50
   damage: 1
-  penetration: 10
+  penetration: -1
 --- !u!135 &135574030069309536
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -228,5 +228,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.2
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
