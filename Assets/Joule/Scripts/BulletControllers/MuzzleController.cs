@@ -3,7 +3,7 @@ using Joule.CharacterControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace Joule
+namespace Joule.BulletControllers
 {
     /// <summary>
     /// 弾を発射するクラス

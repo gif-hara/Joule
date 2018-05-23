@@ -1,4 +1,5 @@
-﻿using Joule.GameSystems;
+﻿using Joule.BulletControllers;
+using Joule.GameSystems;
 using UnityEngine;
 using UnityEngine.Assertions;
 
