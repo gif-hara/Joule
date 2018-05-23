@@ -1,8 +1,10 @@
-﻿using HK.Framework.EventSystems;
+﻿using System;
+using HK.Framework.EventSystems;
 using Joule.CameraControllers;
 using Joule.Events.CharacterControllers;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Object = UnityEngine.Object;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -22,7 +24,7 @@ namespace Joule.CharacterControllers
         private GameObject model;
 
         [SerializeField]
-        private PlayerMuzzleController muzzleController;
+        private MuzzleRegulation[] muzzleRegulations;
 
         [SerializeField]
         private GameCameraController cameraController;
@@ -40,9 +42,32 @@ namespace Joule.CharacterControllers
             character.CachedTransform.position = t.position;
             character.CachedTransform.rotation = t.rotation;
             Instantiate(this.model, character.CachedTransform);
-            Instantiate(this.muzzleController, character.CachedTransform).Attach(character);
+            foreach (var muzzleRegulation in this.muzzleRegulations)
+            {
+                muzzleRegulation.Instantiate(character);
+            }
             Instantiate(this.cameraController);
             Broker.Global.Publish(PlayerSpawned.Get(character));
+        }
+
+        [Serializable]
+        public class MuzzleRegulation
+        {
+            [SerializeField]
+            private PlayerMuzzleController prefab;
+
+            [SerializeField]
+            private PlayerFireCondition condition;
+
+            public PlayerMuzzleController Instantiate(Character owner)
+            {
+                var controller = Object.Instantiate(this.prefab, owner.CachedTransform);
+                controller.transform.localPosition = Vector3.zero;
+                controller.transform.localRotation = Quaternion.identity;
+                controller.Attach(owner, this.condition);
+
+                return controller;
+            }
         }
 
 #if UNITY_EDITOR

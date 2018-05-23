@@ -21,6 +21,8 @@ namespace Joule.CharacterControllers
 
         private float currentCoolTime;
 
+        private PlayerFireCondition condition;
+
         void Awake()
         {
             this.currentCoolTime = this.coolTime;
@@ -28,7 +30,7 @@ namespace Joule.CharacterControllers
 
         void Update()
         {
-            if (Input.GetButtonDown(ButtonNames.Fire) && this.CanFire)
+            if (this.CanFire)
             {
                 foreach (var muzzleController in this.muzzleControllers)
                 {
@@ -41,14 +43,15 @@ namespace Joule.CharacterControllers
             this.currentCoolTime += Time.deltaTime;
         }
 
-        public void Attach(Character character)
+        public void Attach(Character character, PlayerFireCondition condition)
         {
             this.character = character;
+            this.condition = condition;
         }
 
         private bool CanFire
         {
-            get { return this.currentCoolTime >= this.coolTime; }
+            get { return this.currentCoolTime >= this.coolTime && this.condition.Condition; }
         }
     }
 }

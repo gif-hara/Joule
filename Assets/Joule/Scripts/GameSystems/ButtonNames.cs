@@ -14,4 +14,14 @@
         
         public const string Lockon = "Lockon";
     }
+
+    public enum ButtonNameType
+    {
+        MoveHorizontal,
+        MoveVertical,
+        CameraHorizontal,
+        CameraVertical,
+        Fire,
+        Lockon,
+    }
 }

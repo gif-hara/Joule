@@ -520,8 +520,9 @@ MonoBehaviour:
   character: {fileID: 114796520614293646, guid: c8c83aaeffef2483f88287cce2e2128d,
     type: 2}
   model: {fileID: 1576877865109990, guid: 4ad0074c82591459481eb34e724a6da9, type: 2}
-  muzzleController: {fileID: 114873897375574174, guid: 6dc597882dade41449d6cbcc4409340a,
-    type: 2}
+  muzzleRegulations:
+  - prefab: {fileID: 114873897375574174, guid: 6dc597882dade41449d6cbcc4409340a, type: 2}
+    condition: {fileID: 11400000, guid: 5bce0344094464c669d7dc39f412193b, type: 2}
   cameraController: {fileID: 114072945533236818, guid: 19a1b32b9271543f0815039d08c8b1af,
     type: 2}
   imageModel: {fileID: 0}
