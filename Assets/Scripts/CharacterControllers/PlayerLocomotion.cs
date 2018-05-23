@@ -37,7 +37,7 @@ namespace Joule.CharacterControllers
             }
             else
             {
-                var yaw = Input.GetAxis(ButtonNames.CameraHorizontal) * 100.0f * Time.deltaTime;
+                var yaw = Input.GetAxis(ButtonNames.CameraHorizontal) * Options.Instance.Data.CameraSpeed * Time.deltaTime;
                 this.cachedTransform.rotation *= Quaternion.Euler(0.0f, yaw, 0.0f);
             }
         }

@@ -26,9 +26,6 @@ namespace Joule.CameraControllers
         [SerializeField]
         private float chaseTrackSmoothTime;
 
-        [SerializeField]
-        private float pivotSpeed;
-
         private Vector3 chaseTrackVelocity;
 
         void Awake()
@@ -81,8 +78,8 @@ namespace Joule.CameraControllers
         {
             var yaw = Input.GetAxis(ButtonNames.CameraHorizontal);
             var pitch = Input.GetAxis(ButtonNames.CameraVertical);
-            var pivot = new Vector2(yaw, pitch).normalized * this.pivotSpeed * Time.deltaTime;
-            this.cameraman.AddPivot(pivot.x, pivot.y);
+            var t = Options.Instance.Data.CameraSpeed * Time.deltaTime;
+            this.cameraman.AddPivot(yaw * t, pitch * t);
         }
 
         private void StartPivotOnThirdPerson()
