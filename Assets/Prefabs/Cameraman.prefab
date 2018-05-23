@@ -220,7 +220,6 @@ MonoBehaviour:
   cameraman: {fileID: 114429379273947830}
   track: {fileID: 0}
   chaseTrackSmoothTime: 10
-  pivotSpeed: 100
 --- !u!114 &114429379273947830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -239,3 +238,4 @@ MonoBehaviour:
   controlledCamera: {fileID: 20364295089288604}
   pitchMax: 75
   pitchMin: 5
+  pitchSmoothTime: 10

@@ -28,6 +28,8 @@ namespace Joule.CameraControllers
 
         private Vector3 chaseTrackVelocity;
 
+        private Vector3 pivotVelocity;
+
         void Awake()
         {
             Broker.Global.Receive<PlayerSpawned>()
@@ -79,7 +81,7 @@ namespace Joule.CameraControllers
             var yaw = Input.GetAxis(ButtonNames.CameraHorizontal);
             var pitch = Input.GetAxis(ButtonNames.CameraVertical);
             var t = Options.Instance.Data.CameraSpeed * Time.deltaTime;
-            this.cameraman.AddPivot(yaw * t, pitch * t);
+            this.cameraman.AddPivot(pitch * t, yaw * t);
         }
 
         private void StartPivotOnThirdPerson()
