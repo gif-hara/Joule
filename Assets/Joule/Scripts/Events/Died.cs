@@ -4,7 +4,7 @@ using Joule.CharacterControllers;
 namespace Joule.Events.CharacterControllers
 {
     /// <summary>
-    /// <see cref="Character"/>
+    /// <see cref="Character"/>が死亡した際のイベント
     /// </summary>
     public sealed class Died : Message<Died, Character>
     {
