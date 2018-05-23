@@ -27,8 +27,9 @@ namespace Joule
 
         public void Fire(Character owner)
         {
-            var bullet = Instantiate(this.prefab, this.cachedTransform.position, this.cachedTransform.rotation);
-            bullet.Initialize(owner);
+            var bullet = this.prefab.Rent(owner);
+            bullet.CachedTransform.position = this.cachedTransform.position;
+            bullet.CachedTransform.rotation = this.cachedTransform.rotation;
         }
     }
 }

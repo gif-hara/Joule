@@ -1,5 +1,8 @@
-﻿using Joule.CharacterControllers;
+﻿using System;
+using HK.Framework;
+using Joule.CharacterControllers;
 using Joule.Events.BulletControllers;
+using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -10,6 +13,8 @@ namespace Joule.BulletControllers
     /// </summary>
     public sealed class BulletController : MonoBehaviour
     {
+        public static readonly ObjectPoolBundle<BulletController> Bundle = new ObjectPoolBundle<BulletController>();
+        
         [SerializeField]
         private float duration;
 
@@ -33,24 +38,33 @@ namespace Joule.BulletControllers
         [SerializeField]
         private int penetration;
 
+        private ObjectPool<BulletController> pool;
+
         private Character owner;
 
-        private Transform cachedTransform;
+        public Transform CachedTransform { get; private set; }
 
         void Awake()
         {
-            this.cachedTransform = this.transform;
+            this.CachedTransform = this.transform;
         }
 
         void Update()
         {
-            this.cachedTransform.position += this.cachedTransform.forward * this.moveSpeed * Time.deltaTime;
+            this.CachedTransform.position += this.CachedTransform.forward * this.moveSpeed * Time.deltaTime;
         }
 
-        public void Initialize(Character owner)
+        public BulletController Rent(Character owner)
         {
-            this.owner = owner;
-            Destroy(this.gameObject, this.duration);
+            var pool = Bundle.Get(this);
+            var instance = pool.Rent();
+            instance.pool = pool;
+            instance.owner = owner;
+            Observable.Timer(TimeSpan.FromSeconds(this.duration))
+                .SubscribeWithState(instance, (_, _this) => _this.pool.Return(_this))
+                .AddTo(this);
+
+            return instance;
         }
         
         private void OnTriggerEnter(Collider other)
@@ -81,7 +95,7 @@ namespace Joule.BulletControllers
                 this.penetration--;
                 if (this.penetration <= 0)
                 {
-                    Destroy(this.gameObject);
+                    this.pool.Return(this);
                 }
             }
         }
