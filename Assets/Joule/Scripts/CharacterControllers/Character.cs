@@ -60,7 +60,9 @@ namespace Joule.CharacterControllers
                 .SubscribeWithState2(this, blueprint, (_, _this, b) =>
                 {
                     Destroy(_this.gameObject);
-                    Instantiate(b.DiedEffect, _this.CachedTransform.position, _this.CachedTransform.rotation);
+                    b.DiedEffect
+                        .Rent(_this.CachedTransform.position, _this.CachedTransform.rotation)
+                        .ReturnToPoolOnTimer(3.0f);
                 })
                 .AddTo(this);
         }

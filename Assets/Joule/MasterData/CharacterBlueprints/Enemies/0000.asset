@@ -14,6 +14,7 @@ MonoBehaviour:
   character: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
     type: 2}
   model: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668, type: 2}
-  diedEffect: {fileID: 1498809428286980, guid: b3a3ac540666a4da1ad9e6ca6268e3f3, type: 2}
+  diedEffect: {fileID: 114335706610334162, guid: b3a3ac540666a4da1ad9e6ca6268e3f3,
+    type: 2}
   status:
     HitPoint: 1

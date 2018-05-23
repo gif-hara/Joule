@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Joule.ObjectPools;
+using UnityEngine;
 using UnityEngine.Assertions;
 
 namespace Joule.CharacterControllers
@@ -20,8 +21,8 @@ namespace Joule.CharacterControllers
         }
 
         [SerializeField]
-        private GameObject diedEffect;
-        public GameObject DiedEffect
+        private PoolableEffect diedEffect;
+        public PoolableEffect DiedEffect
         {
             get { return diedEffect; }
         }
