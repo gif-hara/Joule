@@ -31,9 +31,12 @@ namespace Joule.CharacterControllers
             this.characterController.SimpleMove(velocity * speed * Time.deltaTime);
 
             var lockon = Input.GetButton(ButtonNames.Lockon);
-            if (!lockon && velocity.sqrMagnitude > 0.0f)
+            if (!lockon)
             {
-                this.cachedTransform.forward = velocity;
+                if (velocity.sqrMagnitude > 0.0f)
+                {
+                    this.cachedTransform.forward = velocity;
+                }
             }
             else
             {
