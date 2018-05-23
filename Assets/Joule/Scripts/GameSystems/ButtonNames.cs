@@ -13,6 +13,12 @@
         public const string Fire = "Fire";
         
         public const string Lockon = "Lockon";
+        
+        public const string Skill0 = "Skill0";
+        
+        public const string Skill1 = "Skill1";
+        
+        public const string Skill2 = "Skill2";
     }
 
     public enum ButtonNameType
@@ -23,5 +29,8 @@
         CameraVertical,
         Fire,
         Lockon,
+        Skill0,
+        Skill1,
+        Skill2,
     }
 }

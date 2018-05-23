@@ -26,6 +26,12 @@ namespace Joule
                     return ButtonNames.Fire;
                 case ButtonNameType.Lockon:
                     return ButtonNames.Lockon;
+                case ButtonNameType.Skill0:
+                    return ButtonNames.Skill0;
+                case ButtonNameType.Skill1:
+                    return ButtonNames.Skill1;
+                case ButtonNameType.Skill2:
+                    return ButtonNames.Skill2;
                 default:
                     Assert.IsTrue(false, string.Format("未対応の値です {0}", self));
                     return String.Empty;
