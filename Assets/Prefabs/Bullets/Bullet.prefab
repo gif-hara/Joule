@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4719876183501960}
   - component: {fileID: 33101619464776386}
   - component: {fileID: 23728869792469832}
-  - component: {fileID: 135574030069309536}
   - component: {fileID: 54143591437646424}
+  - component: {fileID: 135574030069309536}
   - component: {fileID: 114617730289114236}
   - component: {fileID: 96974721642376684}
   m_Layer: 0
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1885709825659824}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 52, y: 1, z: 13}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -101,7 +101,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 126
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!96 &96974721642376684
 TrailRenderer:
   serializedVersion: 2
@@ -215,9 +215,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   duration: 1.5
-  moveSpeed: 150
+  moveSpeed: 100
   damage: 1
-  penetration: 0
+  penetration: 10
 --- !u!135 &135574030069309536
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -228,5 +228,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1.2
   m_Center: {x: 0, y: 0, z: 0}

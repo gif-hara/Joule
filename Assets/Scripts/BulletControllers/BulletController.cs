@@ -27,6 +27,9 @@ namespace Joule.BulletControllers
         /// <summary>
         /// 貫通できる回数
         /// </summary>
+        /// <remarks>
+        /// <c>-1</c>にした場合は常に貫通する
+        /// </remarks>
         [SerializeField]
         private int penetration;
 
@@ -60,10 +63,14 @@ namespace Joule.BulletControllers
             }
             
             character.Broker.Publish(HitBullet.Get(this));
-            this.penetration--;
-            if (this.penetration <= 0)
+            
+            if (this.penetration != -1)
             {
-                Destroy(this.gameObject);
+                this.penetration--;
+                if (this.penetration <= 0)
+                {
+                    Destroy(this.gameObject);
+                }
             }
         }
     }
