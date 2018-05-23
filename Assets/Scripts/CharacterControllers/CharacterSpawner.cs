@@ -1,31 +1,25 @@
 ﻿using HK.Framework.EventSystems;
-using Joule.CameraControllers;
 using Joule.Events.CharacterControllers;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace Joule.CharacterControllers
 {
     /// <summary>
-    /// プレイヤーを生成するクラス
+    /// <see cref="Character"/>を生成する
     /// </summary>
     [ExecuteInEditMode]
-    public sealed class PlayerSpawner : MonoBehaviour
+    public sealed class CharacterSpawner : MonoBehaviour
     {
         [SerializeField]
-        private Character character;
+        private Character characterPrefab;
 
         [SerializeField]
-        private GameObject model;
-
+        private GameObject modelPrefab;
+        
         [SerializeField]
-        private PlayerMuzzleController muzzleController;
-
-        [SerializeField]
-        private GameCameraController cameraController;
+        private bool awakeOnSpawn;
 
         void Awake()
         {
@@ -35,16 +29,25 @@ namespace Joule.CharacterControllers
                 return;
             }
 #endif
-            var t = this.transform;
-            var character = Instantiate(this.character);
-            character.CachedTransform.position = t.position;
-            character.CachedTransform.rotation = t.rotation;
-            Instantiate(this.model, character.CachedTransform);
-            Instantiate(this.muzzleController, character.CachedTransform).Attach(character);
-            Instantiate(this.cameraController);
-            Broker.Global.Publish(PlayerSpawned.Get(character));
+            
+            if (!this.awakeOnSpawn)
+            {
+                return;
+            }
+            
+            this.Spawn();
         }
 
+        private void Spawn()
+        {
+            var t = this.transform;
+            var character = Instantiate(this.characterPrefab);
+            character.CachedTransform.position = t.position;
+            character.CachedTransform.rotation = t.rotation;
+            Instantiate(this.modelPrefab, character.CachedTransform);
+            Broker.Global.Publish(CharacterSpawned.Get(character));
+        }
+        
 #if UNITY_EDITOR
         [SerializeField][HideInInspector]
         private GameObject imageModel;
@@ -67,12 +70,12 @@ namespace Joule.CharacterControllers
                 return;
             }
 
-            if(this.model == null)
+            if(this.modelPrefab == null)
             {
                 return;
             }
 
-            this.imageModel = Instantiate(this.model, this.transform);
+            this.imageModel = Instantiate(this.modelPrefab, this.transform);
             this.imageModel.transform.localPosition = Vector3.zero;
             this.imageModel.transform.localRotation = Quaternion.identity;
             this.imageModel.hideFlags = HideFlags.DontSave | HideFlags.NotEditable;
@@ -86,5 +89,6 @@ namespace Joule.CharacterControllers
             }
         }
 #endif
+
     }
 }
