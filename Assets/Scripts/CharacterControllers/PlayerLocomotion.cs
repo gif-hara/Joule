@@ -29,9 +29,16 @@ namespace Joule.CharacterControllers
                 .normalized;
 
             this.characterController.SimpleMove(velocity * speed * Time.deltaTime);
-            if (velocity.sqrMagnitude > 0.0f)
+
+            var lockon = Input.GetButton(ButtonNames.Lockon);
+            if (!lockon && velocity.sqrMagnitude > 0.0f)
             {
                 this.cachedTransform.forward = velocity;
+            }
+            else
+            {
+                var yaw = Input.GetAxis(ButtonNames.CameraHorizontal) * 100.0f * Time.deltaTime;
+                this.cachedTransform.rotation *= Quaternion.Euler(0.0f, yaw, 0.0f);
             }
         }
     }

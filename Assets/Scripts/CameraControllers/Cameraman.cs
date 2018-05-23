@@ -53,5 +53,15 @@ namespace Joule.CameraControllers
             euler.x = Mathf.Clamp(euler.x + pitch, this.pitchMin, this.pitchMax);
             this.pivot.localRotation = Quaternion.Euler(euler);
         }
+
+        public void SetPivotYaw(float yaw)
+        {
+            var r = this.pivot.localRotation.eulerAngles;
+            this.pivot.localRotation = Quaternion.Euler(
+                r.x,
+                yaw,
+                r.z
+            );
+        }
     }
 }

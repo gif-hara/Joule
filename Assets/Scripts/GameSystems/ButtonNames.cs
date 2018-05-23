@@ -11,5 +11,7 @@
         public const string CameraVertical = "Camera Vertical";
 
         public const string Fire = "Fire";
+        
+        public const string Lockon = "Lockon";
     }
 }

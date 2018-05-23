@@ -66,10 +66,34 @@ namespace Joule.CameraControllers
 
         private void UpdatePivot()
         {
+            var startLockon = Input.GetButtonDown(ButtonNames.Lockon);
+            if (startLockon)
+            {
+                this.StartPivotOnThirdPerson();
+            }
+            else
+            {
+                this.UpdatePivotFree();
+            }
+        }
+
+        private void UpdatePivotFree()
+        {
             var yaw = Input.GetAxis(ButtonNames.CameraHorizontal);
             var pitch = Input.GetAxis(ButtonNames.CameraVertical);
             var pivot = new Vector2(yaw, pitch).normalized * this.pivotSpeed * Time.deltaTime;
             this.cameraman.AddPivot(pivot.x, pivot.y);
+        }
+
+        private void StartPivotOnThirdPerson()
+        {
+            if (this.track == null)
+            {
+                return;
+            }
+
+            var yaw = this.track.rotation.eulerAngles.y;
+            this.cameraman.SetPivotYaw(yaw);
         }
     }
 }
