@@ -153,10 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &105458613
@@ -199,10 +196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &120960439
@@ -245,10 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &303229487
@@ -357,10 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &530427476
@@ -403,10 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &624361117
@@ -449,10 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &667677090
@@ -596,10 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &746302336
@@ -642,10 +621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &748881472
@@ -688,10 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &809496976
@@ -734,10 +707,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &905704952
@@ -1564,10 +1534,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1159725585
@@ -1610,10 +1577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1186765522
@@ -1656,10 +1620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1576374271
@@ -1702,10 +1663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!43 &1631436162
@@ -1713,7 +1671,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh28386
+  m_Name: pb_Mesh35364
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1903,10 +1861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1720712486
@@ -1949,10 +1904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1735396572
@@ -1995,10 +1947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1752269010
@@ -2041,10 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1861623946
@@ -2087,10 +2033,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1863483016
@@ -2133,10 +2076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1951713830
@@ -2179,10 +2119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1952215463
@@ -2225,10 +2162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &1986911150
@@ -2271,10 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &2015671019
@@ -2317,10 +2248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}
 --- !u!1 &2134316338
@@ -2363,9 +2291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff385e79fe2d34e1ebae40f0a74c98cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 114893358831107934, guid: 277c1e60fd2164fefaa3703cd1c68b9b,
-    type: 2}
-  modelPrefab: {fileID: 1001267448381068, guid: 9a2bf73d14d6e4206bc7f4bcef0a8668,
-    type: 2}
+  blueprint: {fileID: 11400000, guid: 18e8bb0881e4f4d049fa0ec429227833, type: 2}
   awakeOnSpawn: 1
   imageModel: {fileID: 0}

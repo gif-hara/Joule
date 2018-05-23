@@ -13,11 +13,8 @@ namespace Joule.CharacterControllers
     public sealed class CharacterSpawner : MonoBehaviour
     {
         [SerializeField]
-        private Character characterPrefab;
-
-        [SerializeField]
-        private GameObject modelPrefab;
-        
+        private CharacterBlueprint blueprint;
+                
         [SerializeField]
         private bool awakeOnSpawn;
 
@@ -41,10 +38,7 @@ namespace Joule.CharacterControllers
         private void Spawn()
         {
             var t = this.transform;
-            var character = Instantiate(this.characterPrefab);
-            character.CachedTransform.position = t.position;
-            character.CachedTransform.rotation = t.rotation;
-            Instantiate(this.modelPrefab, character.CachedTransform);
+            var character = this.blueprint.Instantiate(t.position, t.rotation);
             Broker.Global.Publish(CharacterSpawned.Get(character));
         }
         
@@ -70,12 +64,12 @@ namespace Joule.CharacterControllers
                 return;
             }
 
-            if(this.modelPrefab == null)
+            if(this.blueprint == null)
             {
                 return;
             }
 
-            this.imageModel = Instantiate(this.modelPrefab, this.transform);
+            this.imageModel = Instantiate(this.blueprint.Model, this.transform);
             this.imageModel.transform.localPosition = Vector3.zero;
             this.imageModel.transform.localRotation = Quaternion.identity;
             this.imageModel.hideFlags = HideFlags.DontSave | HideFlags.NotEditable;

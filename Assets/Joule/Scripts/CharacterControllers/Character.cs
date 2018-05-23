@@ -1,4 +1,5 @@
-﻿using HK.Framework.Extensions;
+﻿using HK.Framework;
+using HK.Framework.Extensions;
 using Joule.Events.CharacterControllers;
 using UniRx;
 using UnityEngine;
@@ -11,7 +12,20 @@ namespace Joule.CharacterControllers
     /// </summary>
     public sealed class Character : MonoBehaviour
     {
-        public CharacterStatus Status { get; private set; }
+        private CharacterStatus status;
+        public CharacterStatus Status
+        {
+            get
+            {
+                if (this.status == null)
+                {
+                    this.status = new CharacterStatus();
+                }
+
+                return this.status;
+            }
+            
+        }
 
         private IMessageBroker broker;
         public IMessageBroker Broker
@@ -31,18 +45,24 @@ namespace Joule.CharacterControllers
         void Awake()
         {
             this.CachedTransform = this.transform;
-            this.Status = new CharacterStatus();
+        }
+
+        public void Initialize(CharacterBlueprint blueprint)
+        {
+            this.status = new CharacterStatus(blueprint.Status);
+            var m = Instantiate(blueprint.Model, this.CachedTransform);
+            m.transform.localPosition = Vector3.zero;
+            m.transform.localRotation = Quaternion.identity;
             
             HK.Framework.EventSystems.Broker.Global.Receive<Died>()
                 .Where(x => x.Character == this)
                 .Take(1)
-                .SubscribeWithState(this, (_, _this) => { Destroy(_this.gameObject); })
+                .SubscribeWithState2(this, blueprint, (_, _this, b) =>
+                {
+                    Destroy(_this.gameObject);
+                    Instantiate(b.DiedEffect, _this.CachedTransform.position, _this.CachedTransform.rotation);
+                })
                 .AddTo(this);
-        }
-
-        public void Initialize(CharacterStatus status)
-        {
-            this.Status = status;
         }
     }
 }
