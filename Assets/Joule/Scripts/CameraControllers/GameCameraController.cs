@@ -25,7 +25,10 @@ namespace Joule.CameraControllers
         }
 
         [SerializeField]
-        private float chaseTrackSmoothTime;
+        private float defaultChaseTrackSmoothTime;
+        
+        [SerializeField]
+        private float lockonChaseTrackSmoothTime;
 
         [SerializeField]
         private float defaultDolly;
@@ -76,11 +79,13 @@ namespace Joule.CameraControllers
                 return;
             }
 
+            var lockon = Input.GetButton(ButtonNames.Lockon);
+            var smoothTime = lockon ? this.lockonChaseTrackSmoothTime : this.defaultChaseTrackSmoothTime;
             this.cameraman.Root.position = Vector3.SmoothDamp(
                 this.cameraman.Root.localPosition,
                 this.track.position,
                 ref this.chaseTrackVelocity,
-                this.chaseTrackSmoothTime * Time.deltaTime
+                smoothTime * Time.deltaTime
             );
         }
 

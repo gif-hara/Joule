@@ -219,7 +219,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraman: {fileID: 114429379273947830}
   track: {fileID: 0}
-  chaseTrackSmoothTime: 10
+  defaultChaseTrackSmoothTime: 7
+  lockonChaseTrackSmoothTime: 3
   defaultDolly: 10
   lockonDolly: 5
   backCheckLayer:
