@@ -43,9 +43,16 @@ namespace Joule.CameraControllers
         [SerializeField]
         private float dollySmoothTime;
 
+        [SerializeField]
+        private float rigSmoothTime;
+
         private Vector3 targetPivot;
 
+        private Vector3 targetRig;
+
         private Vector3 pivotVelocity;
+
+        private Vector3 rigVelocity;
 
         private float targetDolly;
 
@@ -55,12 +62,14 @@ namespace Joule.CameraControllers
         {
             this.targetPivot = this.pivot.localRotation.eulerAngles;
             this.targetDolly = this.dolly.localPosition.z;
+            this.targetRig = this.rig.localRotation.eulerAngles;
         }
 
         void Update()
         {
             this.UpdatePivot();
             this.UpdateDolly();
+            this.UpdateRig();
         }
 
         public void SetPivot(float pitch, float yaw)
@@ -81,6 +90,12 @@ namespace Joule.CameraControllers
             this.targetPivot.y = yaw;
         }
 
+        public void SetRig(float pitch, float yaw)
+        {
+            this.targetRig.x = pitch;
+            this.targetRig.y = yaw;
+        }
+
         private void ClampPitch()
         {
             this.targetPivot.x = Mathf.Clamp(this.targetPivot.x, this.pitchMin, this.pitchMax);
@@ -91,11 +106,9 @@ namespace Joule.CameraControllers
             var r = this.pivot.localRotation.eulerAngles;
             var t = this.pitchSmoothTime * Time.deltaTime;
             this.pivot.localRotation = Quaternion.Euler(
-                new Vector3(
-                    Mathf.SmoothDampAngle(r.x, this.targetPivot.x, ref this.pivotVelocity.x, t),
-                    Mathf.SmoothDampAngle(r.y, this.targetPivot.y, ref this.pivotVelocity.y, t),
-                    Mathf.SmoothDampAngle(r.z, this.targetPivot.z, ref this.pivotVelocity.z, t)
-                )
+                Mathf.SmoothDampAngle(r.x, this.targetPivot.x, ref this.pivotVelocity.x, t),
+                Mathf.SmoothDampAngle(r.y, this.targetPivot.y, ref this.pivotVelocity.y, t),
+                Mathf.SmoothDampAngle(r.z, this.targetPivot.z, ref this.pivotVelocity.z, t)
             );
         }
 
@@ -109,6 +122,17 @@ namespace Joule.CameraControllers
             var pos = this.dolly.localPosition;
             pos.z = Mathf.SmoothDamp(pos.z, this.targetDolly, ref this.dollyVelocity, this.dollySmoothTime * Time.deltaTime);
             this.dolly.localPosition = pos;
+        }
+
+        private void UpdateRig()
+        {
+            var r = this.rig.localRotation.eulerAngles;
+            var t = this.rigSmoothTime * Time.deltaTime;
+            this.rig.localRotation = Quaternion.Euler(
+                Mathf.SmoothDampAngle(r.x, this.targetRig.x, ref this.rigVelocity.x, t),
+                Mathf.SmoothDampAngle(r.y, this.targetRig.y, ref this.rigVelocity.y, t),
+                Mathf.SmoothDampAngle(r.z, this.targetRig.z, ref this.rigVelocity.z, t)
+                );
         }
     }
 }

@@ -45,9 +45,17 @@ namespace Joule.CameraControllers
         [SerializeField]
         private float lockonTrackOffsetXThreshold;
 
+        [SerializeField]
+        private float defaultRigPitch;
+
+        [SerializeField]
+        private float lockonRigPitch;
+
         private Vector3 chaseTrackVelocity;
 
         private Vector3 pivotVelocity;
+
+        private Vector3 rigVelocity;
 
         private float currentLockonTrackOffsetX;
 
@@ -70,6 +78,7 @@ namespace Joule.CameraControllers
             this.UpdatePivot();
             this.UpdateDolly();
             this.UpdateLockonTrackOffsetX();
+            this.UpdateRig();
         }
 
         private void ChaseTrack()
@@ -162,6 +171,12 @@ namespace Joule.CameraControllers
                     _this.track.rotation = o.rotation;
                 })
                 .AddTo(this);
+        }
+
+        private void UpdateRig()
+        {
+            var lockon = Input.GetButton(ButtonNames.Lockon);
+            this.cameraman.SetRig(lockon ? this.lockonRigPitch : this.defaultRigPitch, 0.0f);
         }
     }
 }

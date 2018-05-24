@@ -226,8 +226,10 @@ MonoBehaviour:
   backCheckLayer:
     serializedVersion: 2
     m_Bits: 0
-  lockonTrackOffsetX: 2
-  lockonTrackOffsetXThreshold: 0.9
+  lockonTrackOffsetX: 0
+  lockonTrackOffsetXThreshold: 0.97
+  defaultRigPitch: -20
+  lockonRigPitch: -30
 --- !u!114 &114429379273947830
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,6 +247,7 @@ MonoBehaviour:
   rig: {fileID: 4250279106620662}
   controlledCamera: {fileID: 20364295089288604}
   pitchMax: 75
-  pitchMin: -30
+  pitchMin: 5
   pitchSmoothTime: 10
   dollySmoothTime: 10
+  rigSmoothTime: 5
