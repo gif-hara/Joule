@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114953229530209972}
   - component: {fileID: 54823425946885470}
   - component: {fileID: 143551707224747056}
+  - component: {fileID: 208257467692790364}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -111,3 +112,18 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!208 &208257467692790364
+NavMeshObstacle:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973913238779782}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1, z: 0}
+  m_TimeToStationary: 0.5
