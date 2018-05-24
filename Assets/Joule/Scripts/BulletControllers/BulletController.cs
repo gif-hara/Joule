@@ -60,6 +60,7 @@ namespace Joule.BulletControllers
             var instance = pool.Rent();
             instance.pool = pool;
             instance.owner = owner;
+            instance.penetration = this.penetration;
             Observable.Timer(TimeSpan.FromSeconds(instance.duration))
                 .TakeUntilDisable(instance)
                 .SubscribeWithState(instance, (_, _this) => _this.pool.Return(_this))
