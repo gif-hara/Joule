@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using HK.Framework.Extensions;
+using TMPro;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -13,7 +15,60 @@ namespace Joule.CharacterControllers.AI
     public sealed class SimpleAIController : AIControllerBase
     {
         [SerializeField]
+        private LayerMask targetLayerMask;
+        
+        [SerializeField]
         private StateElement[] elements;
+
+        protected override void InternalAwake()
+        {
+            var tempElements = this.elements;
+            this.elements = new StateElement[this.elements.Length];
+            for (var i = 0; i < this.elements.Length; i++)
+            {
+                this.elements[i] = tempElements[i].Clone;
+            }
+
+            var initialStateIndex = 0;
+            this.Change(this.elements[initialStateIndex].State, initialStateIndex);
+
+            this.UpdateAsObservable()
+                .Where(_ => this.isActiveAndEnabled)
+                .SubscribeWithState(this,
+                    (_, _this) =>
+                    {
+                        _this.elements[_this.currentStateIndex].CalculateNextState(_this, _this.elements);
+                    })
+                .AddTo(this);
+
+            this.OnTriggerEnterAsObservable()
+                .Where(_ => this.isActiveAndEnabled)
+                .SubscribeWithState(this, (c, _this) =>
+                {
+                    var character = c.GetComponentInParent<Character>();
+                    if (character == null)
+                    {
+                        return;
+                    }
+
+                    if (_this.targetLayerMask.IsIncluded(character.gameObject))
+                    {
+                        _this.Target = character;
+                    }
+                })
+                .AddTo(this);
+        }
+
+        private bool CanTarget(Collider other)
+        {
+            var character = other.GetComponentInParent<Character>();
+            if (character == null)
+            {
+                return false;
+            }
+
+            return this.targetLayerMask.IsIncluded(character.gameObject);
+        }
 
         [Serializable]
         public class StateElement
@@ -92,28 +147,6 @@ namespace Joule.CharacterControllers.AI
                     return instance;
                 }
             }
-        }
-
-        protected override void InternalAwake()
-        {
-            var tempElements = this.elements;
-            this.elements = new StateElement[this.elements.Length];
-            for (var i = 0; i < this.elements.Length; i++)
-            {
-                this.elements[i] = tempElements[i].Clone;
-            }
-
-            var initialStateIndex = 0;
-            this.Change(this.elements[initialStateIndex].State, initialStateIndex);
-
-            this.UpdateAsObservable()
-                .Where(_ => this.isActiveAndEnabled)
-                .SubscribeWithState(this,
-                    (_, _this) =>
-                    {
-                        _this.elements[_this.currentStateIndex].CalculateNextState(_this, _this.elements);
-                    })
-                .AddTo(this);
         }
     }
 }

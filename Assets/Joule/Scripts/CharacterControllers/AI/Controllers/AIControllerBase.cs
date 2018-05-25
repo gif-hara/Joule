@@ -33,7 +33,7 @@ namespace Joule.CharacterControllers.AI
             }
 
             this.CurrentState = nextState;
-            this.CurrentState.OnEnter(this.Owner);
+            this.CurrentState.OnEnter(this);
             this.currentStateIndex = stateIndex;
         }
     }

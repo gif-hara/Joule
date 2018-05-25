@@ -12,7 +12,7 @@ namespace Joule.CharacterControllers.AI
     /// <summary>
     /// ランダムに移動するステート
     /// </summary>
-    [CreateAssetMenu(menuName = "Joule/AI/RandomMove")]
+    [CreateAssetMenu(menuName = "Joule/AI/States/RandomMove")]
     public sealed class RandomMove : StateBase
     {
         [SerializeField]
@@ -30,13 +30,13 @@ namespace Joule.CharacterControllers.AI
         [SerializeField]
         private float destinationCheckDistance;
         
-        public override void OnEnter(Character character)
+        public override void OnEnter(AIControllerBase aiController)
         {
-            var navMeshAgent = character.GetComponent<NavMeshAgent>();
-            Assert.IsNotNull(navMeshAgent, string.Format("{0}に{1}がアタッチされていませんでした", character.name, typeof(NavMeshAgent)));
+            var navMeshAgent = aiController.Owner.GetComponent<NavMeshAgent>();
+            Assert.IsNotNull(navMeshAgent, string.Format("{0}に{1}がアタッチされていませんでした", aiController.Owner, typeof(NavMeshAgent)));
 
-            var navMeshObstacle = character.GetComponent<NavMeshObstacle>();
-            Assert.IsNotNull(navMeshAgent, string.Format("{0}に{1}がアタッチされていませんでした", character.name, typeof(NavMeshObstacle)));
+            var navMeshObstacle = aiController.Owner.GetComponent<NavMeshObstacle>();
+            Assert.IsNotNull(navMeshObstacle, string.Format("{0}に{1}がアタッチされていませんでした", aiController.Owner, typeof(NavMeshObstacle)));
             
             navMeshAgent.speed = this.speed;
 

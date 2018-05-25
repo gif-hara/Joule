@@ -11,7 +11,7 @@ namespace Joule.CharacterControllers.AI
     {
         protected readonly CompositeDisposable runningEvents = new CompositeDisposable();
         
-        public abstract void OnEnter(Character character);
+        public abstract void OnEnter(AIControllerBase aiController);
 
         public virtual void OnExit()
         {
