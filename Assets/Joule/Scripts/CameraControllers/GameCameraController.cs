@@ -72,7 +72,7 @@ namespace Joule.CameraControllers
                 .AddTo(this);
         }
 
-        void Update()
+        void LateUpdate()
         {
             this.ChaseTrack();
             this.UpdatePivot();
