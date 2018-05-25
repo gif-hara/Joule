@@ -1,20 +1,30 @@
 ﻿using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace Joule.CharacterControllers.AI
 {
     /// <summary>
-    /// ステートマシンの抽象クラス
+    /// AIを制御するクラス
     /// </summary>
-    public abstract class StateMachineBase : ScriptableObject
+    public abstract class AIControllerBase : MonoBehaviour
     {
-        public AIController AIController { get; protected set; }
+        public Character Owner { get; private set; }
+
+        public Character Target { get; set; }
 
         public StateBase CurrentState { get; private set; }
 
         protected int currentStateIndex;
 
-        public abstract StateMachineBase Clone(AIController aiController);
+        protected abstract void InternalAwake();
 
+        void Awake()
+        {
+            this.Owner = this.GetComponentInParent<Character>();
+            Assert.IsNotNull(this.Owner);
+            this.InternalAwake();
+        }
+        
         public void Change(StateBase nextState, int stateIndex)
         {
             if (this.CurrentState != null)
@@ -23,7 +33,7 @@ namespace Joule.CharacterControllers.AI
             }
 
             this.CurrentState = nextState;
-            this.CurrentState.OnEnter(this.AIController.Owner);
+            this.CurrentState.OnEnter(this.Owner);
             this.currentStateIndex = stateIndex;
         }
     }

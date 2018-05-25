@@ -8,7 +8,7 @@ namespace Joule.CharacterControllers.AI
     /// </summary>
     public abstract class ChangeStateConditionBase : ScriptableObject
     {
-        public abstract bool Evalution(StateMachineBase stateMachine);
+        public abstract bool Evalution(AIControllerBase aiController);
 
         public abstract ChangeStateConditionBase Clone { get; }
     }
