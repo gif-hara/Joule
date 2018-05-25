@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d91b6acca650c4270a16e00c7cddfb79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 11400000, guid: 79af540f090c540aea965598fccfc68b, type: 2}
+  stateMachineBase: {fileID: 11400000, guid: fa765ce1559474753a5ec79ed05eb4b9, type: 2}
 --- !u!114 &114893358831107934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -120,7 +120,7 @@ NavMeshAgent:
   m_Acceleration: 1000
   avoidancePriority: 50
   m_AngularSpeed: 720
-  m_StoppingDistance: 1
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

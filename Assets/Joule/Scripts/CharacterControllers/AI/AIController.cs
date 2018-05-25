@@ -9,16 +9,19 @@ namespace Joule.CharacterControllers.AI
     [RequireComponent(typeof(Character))]
     public sealed class AIController : MonoBehaviour
     {
-        [SerializeField]
-        private StateBase state;
+        public Character Owner { get; private set; }
 
-        private Character character;
+        [SerializeField]
+        private StateMachineBase stateMachineBase;
+        
+        public Character Target { get; set; }
+
+        private StateMachineBase stateMachine;
 
         void Awake()
         {
-            this.character = this.GetComponent<Character>();
-            this.state = this.state.Clone;
-            this.state.OnEnter(this.character);
+            this.Owner = this.GetComponentInParent<Character>();
+            this.stateMachine = this.stateMachineBase.Clone(this);
         }
     }
 }
