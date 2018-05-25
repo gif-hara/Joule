@@ -18,3 +18,4 @@ MonoBehaviour:
     type: 2}
   status:
     HitPoint: 1
+  ai: {fileID: 114661259782545128, guid: 874bdf6c880514d438593b14d6cd0bfb, type: 2}

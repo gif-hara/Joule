@@ -1,4 +1,5 @@
-﻿using Joule.ObjectPools;
+﻿using Joule.CharacterControllers.AI;
+using Joule.ObjectPools;
 using UnityEngine;
 using UnityEngine.Assertions;
 
@@ -32,6 +33,13 @@ namespace Joule.CharacterControllers
         public CharacterStatus Status
         {
             get { return status; }
+        }
+
+        [SerializeField]
+        private AIControllerBase ai;
+        public AIControllerBase AI
+        {
+            get { return ai; }
         }
 
         public Character Instantiate(Vector3 position, Quaternion rotation)
