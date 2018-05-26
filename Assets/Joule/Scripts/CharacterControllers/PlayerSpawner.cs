@@ -23,7 +23,7 @@ namespace Joule.CharacterControllers
         [SerializeField]
         private GameCameraController cameraController;
 
-        protected override Character Spawn()
+        public override Character Spawn()
         {
             var character = base.Spawn();
             foreach (var muzzleRegulation in this.muzzleRegulations)
