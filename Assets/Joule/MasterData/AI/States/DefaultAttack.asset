@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: DefaultAttack
   m_EditorClassIdentifier: 
   muzzle: {fileID: 1540278273987774, guid: a7896ee5446044c03b28f9cd1942a1ee, type: 2}
+  interval: 1
+  rotationSmoothTime: 20
