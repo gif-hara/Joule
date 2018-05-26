@@ -23,6 +23,9 @@ namespace Joule.CharacterControllers.AI
         [SerializeField]
         private float rotationSmoothTime;
 
+        [SerializeField]
+        private bool enterOnAttack;
+
         private MuzzleController[] muzzleControllers;
 
         private Vector3 rotationVelocity;
@@ -61,13 +64,15 @@ namespace Joule.CharacterControllers.AI
                 .Where(_ => aiController.isActiveAndEnabled)
                 .SubscribeWithState2(this, aiController, (_, _this, a) =>
                 {
-                    foreach (var m in _this.muzzleControllers)
-                    {
-                        m.Fire(a.Owner);
-                    }
+                    _this.Fire(a.Owner);
                 })
                 .AddTo(this.runningEvents)
                 .AddTo(aiController);
+
+            if (this.enterOnAttack)
+            {
+                this.Fire(aiController.Owner);
+            }
         }
 
         public override StateBase Clone(AIControllerBase aiController)
@@ -79,10 +84,19 @@ namespace Joule.CharacterControllers.AI
             instance.muzzle.transform.localRotation = Quaternion.identity;
             instance.interval = this.interval;
             instance.rotationSmoothTime = this.rotationSmoothTime;
+            instance.enterOnAttack = this.enterOnAttack;
             instance.muzzleControllers = instance.muzzle.GetComponentsInChildren<MuzzleController>();
             Assert.AreNotEqual(instance.muzzleControllers.Length, 0, string.Format("{0}に{1}が存在しません", instance.muzzle, typeof(MuzzleController)));
 
             return instance;
+        }
+
+        private void Fire(Character owner)
+        {
+            foreach (var m in this.muzzleControllers)
+            {
+                m.Fire(owner);
+            }
         }
     }
 }
