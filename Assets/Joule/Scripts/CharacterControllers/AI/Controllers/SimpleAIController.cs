@@ -26,7 +26,7 @@ namespace Joule.CharacterControllers.AI
             this.elements = new StateElement[this.elements.Length];
             for (var i = 0; i < this.elements.Length; i++)
             {
-                this.elements[i] = tempElements[i].Clone;
+                this.elements[i] = tempElements[i].Clone(this);
             }
 
             var initialStateIndex = 0;
@@ -93,29 +93,27 @@ namespace Joule.CharacterControllers.AI
                     var nextStateElement = this.nextStateElements[i];
                     if (nextStateElement.Condition.Evalution(aiController))
                     {
-                        var nextState = elements.FirstOrDefault(s => s.stateName == nextStateElement.NextStateName);
-                        Assert.IsNotNull(nextState, string.Format("{0}に対応する{1}がありませんでした", nextStateElement.NextStateName, typeof(StateElement)));
-                        aiController.Change(nextState.state, i);
+                        var elementIndex = Array.FindIndex(elements, s => s.stateName == nextStateElement.NextStateName);
+                        Assert.AreNotEqual(elementIndex, -1, string.Format("{0}に対応する{1}がありませんでした", nextStateElement.NextStateName, typeof(StateElement)));
+                        var nextState = elements[elementIndex];
+                        aiController.Change(nextState.state, elementIndex);
                         break;
                     }
                 }
             }
 
-            public StateElement Clone
+            public StateElement Clone(AIControllerBase aiController)
             {
-                get
+                var instance = new StateElement();
+                instance.stateName = this.stateName;
+                instance.state = this.state.Clone(aiController);
+                instance.nextStateElements = new NextStateElement[this.nextStateElements.Length];
+                for (var i = 0; i < this.nextStateElements.Length; i++)
                 {
-                    var instance = new StateElement();
-                    instance.stateName = this.stateName;
-                    instance.state = this.state.Clone;
-                    instance.nextStateElements = new NextStateElement[this.nextStateElements.Length];
-                    for (var i = 0; i < this.nextStateElements.Length; i++)
-                    {
-                        instance.nextStateElements[i] = this.nextStateElements[i].Clone;
-                    }
-
-                    return instance;
+                    instance.nextStateElements[i] = this.nextStateElements[i].Clone;
                 }
+
+                return instance;
             }
         }
 

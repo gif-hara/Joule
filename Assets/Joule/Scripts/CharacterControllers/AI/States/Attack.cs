@@ -5,13 +5,13 @@ using UnityEngine.Assertions;
 namespace Joule.CharacterControllers.AI
 {
     /// <summary>
-    /// <see cref="AIControllerBase.Target"/>を追いかけるステート
+    /// <see cref="AIControllerBase.Target"/>に対して攻撃を行うステート
     /// </summary>
-    [CreateAssetMenu(menuName = "Joule/AI/States/Chase")]
-    public sealed class Chase : StateBase
+    [CreateAssetMenu(menuName = "Joule/AI/States/Attack")]
+    public sealed class Attack : StateBase
     {
         [SerializeField]
-        private float speed;
+        private GameObject muzzle;
         
         public override void OnEnter(AIControllerBase aiController)
         {
@@ -21,18 +21,18 @@ namespace Joule.CharacterControllers.AI
             var navMeshObstacle = aiController.Owner.GetComponent<NavMeshObstacle>();
             Assert.IsNotNull(navMeshObstacle, string.Format("{0}に{1}がアタッチされていませんでした", aiController.Owner, typeof(NavMeshObstacle)));
 
-            Assert.IsNotNull(aiController.Target, string.Format("{0}のAIにTargetが設定されていません", aiController.Owner));
-            
-            navMeshObstacle.enabled = false;
-            navMeshAgent.enabled = true;
-            navMeshAgent.speed = this.speed;
-            navMeshAgent.destination = aiController.Target.CachedTransform.position;
+            navMeshAgent.enabled = false;
+            navMeshObstacle.enabled = true;
+            Debug.Log("?");
         }
 
         public override StateBase Clone(AIControllerBase aiController)
         {
-            var instance = CreateInstance<Chase>();
-            instance.speed = this.speed;
+            var instance = CreateInstance<Attack>();
+            instance.muzzle = Instantiate(this.muzzle);
+            instance.muzzle.transform.SetParent(aiController.Owner.CachedTransform);
+            instance.muzzle.transform.localPosition = Vector3.zero;
+            instance.muzzle.transform.localRotation = Quaternion.identity;
             return instance;
         }
     }

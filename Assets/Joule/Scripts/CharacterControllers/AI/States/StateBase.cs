@@ -18,6 +18,6 @@ namespace Joule.CharacterControllers.AI
             this.runningEvents.Clear();
         }
 
-        public abstract StateBase Clone { get; }
+        public abstract StateBase Clone(AIControllerBase aiController);
     }
 }

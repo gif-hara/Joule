@@ -43,18 +43,15 @@ namespace Joule.CharacterControllers.AI
             this.DoMove(navMeshAgent, navMeshObstacle);
         }
 
-        public override StateBase Clone
+        public override StateBase Clone(AIControllerBase aiController)
         {
-            get
-            {
-                var clone = CreateInstance<RandomMove>();
-                clone.waitMin = this.waitMin;
-                clone.waitMax = this.waitMax;
-                clone.range = this.range;
-                clone.speed = this.speed;
-                clone.destinationCheckDistance = this.destinationCheckDistance;
-                return clone;
-            }
+            var clone = CreateInstance<RandomMove>();
+            clone.waitMin = this.waitMin;
+            clone.waitMax = this.waitMax;
+            clone.range = this.range;
+            clone.speed = this.speed;
+            clone.destinationCheckDistance = this.destinationCheckDistance;
+            return clone;
         }
 
         private void DoMove(NavMeshAgent navMeshAgent, NavMeshObstacle navMeshObstacle)
