@@ -10,7 +10,7 @@ namespace Joule.CharacterControllers
     /// <see cref="Character"/>を生成する
     /// </summary>
     [ExecuteInEditMode]
-    public sealed class CharacterSpawner : MonoBehaviour
+    public class CharacterSpawner : MonoBehaviour
     {
         [SerializeField]
         private CharacterBlueprint blueprint;
@@ -35,11 +35,13 @@ namespace Joule.CharacterControllers
             this.Spawn();
         }
 
-        private void Spawn()
+        protected virtual Character Spawn()
         {
             var t = this.transform;
             var character = this.blueprint.Instantiate(t.position, t.rotation);
             Broker.Global.Publish(CharacterSpawned.Get(character));
+
+            return character;
         }
         
 #if UNITY_EDITOR

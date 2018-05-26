@@ -53,9 +53,12 @@ namespace Joule.CharacterControllers
             var m = Instantiate(blueprint.Model, this.CachedTransform);
             m.transform.localPosition = Vector3.zero;
             m.transform.localRotation = Quaternion.identity;
-            var ai = Instantiate(blueprint.AI, this.CachedTransform);
-            ai.transform.localPosition = Vector3.zero;
-            ai.transform.localRotation = Quaternion.identity;
+            if (blueprint.AI != null)
+            {
+                var ai = Instantiate(blueprint.AI, this.CachedTransform);
+                ai.transform.localPosition = Vector3.zero;
+                ai.transform.localRotation = Quaternion.identity;
+            }
             
             HK.Framework.EventSystems.Broker.Global.Receive<Died>()
                 .Where(x => x.Character == this)

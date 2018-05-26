@@ -15,39 +15,25 @@ namespace Joule.CharacterControllers
     /// プレイヤーを生成するクラス
     /// </summary>
     [ExecuteInEditMode]
-    public sealed class PlayerSpawner : MonoBehaviour
+    public sealed class PlayerSpawner : CharacterSpawner
     {
-        [SerializeField]
-        private Character character;
-
-        [SerializeField]
-        private GameObject model;
-
         [SerializeField]
         private MuzzleRegulation[] muzzleRegulations;
 
         [SerializeField]
         private GameCameraController cameraController;
 
-        void Awake()
+        protected override Character Spawn()
         {
-#if UNITY_EDITOR
-            if(!Application.isPlaying)
-            {
-                return;
-            }
-#endif
-            var t = this.transform;
-            var character = Instantiate(this.character);
-            character.CachedTransform.position = t.position;
-            character.CachedTransform.rotation = t.rotation;
-            Instantiate(this.model, character.CachedTransform);
+            var character = base.Spawn();
             foreach (var muzzleRegulation in this.muzzleRegulations)
             {
                 muzzleRegulation.Instantiate(character);
             }
             Instantiate(this.cameraController);
             Broker.Global.Publish(PlayerSpawned.Get(character));
+
+            return character;
         }
 
         [Serializable]
@@ -69,47 +55,5 @@ namespace Joule.CharacterControllers
                 return controller;
             }
         }
-
-#if UNITY_EDITOR
-        [SerializeField][HideInInspector]
-        private GameObject imageModel;
-
-        private void Start()
-        {
-            EditorApplication.playModeStateChanged -= this.PlayModeStateChanged;
-            EditorApplication.playModeStateChanged += this.PlayModeStateChanged;
-        }
-
-        private void Update()
-        {
-            if (Application.isPlaying)
-            {
-                return;
-            }
-
-            if (this.imageModel != null)
-            {
-                return;
-            }
-
-            if(this.model == null)
-            {
-                return;
-            }
-
-            this.imageModel = Instantiate(this.model, this.transform);
-            this.imageModel.transform.localPosition = Vector3.zero;
-            this.imageModel.transform.localRotation = Quaternion.identity;
-            this.imageModel.hideFlags = HideFlags.DontSave | HideFlags.NotEditable;
-        }
-
-        private void PlayModeStateChanged(PlayModeStateChange state)
-        {
-            if(state == PlayModeStateChange.EnteredPlayMode)
-            {
-                DestroyImmediate(this.imageModel);
-            }
-        }
-#endif
     }
 }
