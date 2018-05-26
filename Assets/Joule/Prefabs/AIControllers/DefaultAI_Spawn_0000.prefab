@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 135147343467229046}
   - component: {fileID: 54844592498789066}
   m_Layer: 11
-  m_Name: DefaultAIController
+  m_Name: DefaultAI_Spawn_0000
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,18 +75,11 @@ MonoBehaviour:
   - stateName: Idle
     state: {fileID: 11400000, guid: 79af540f090c540aea965598fccfc68b, type: 2}
     nextStateElements:
-    - nextStateName: Chase
+    - nextStateName: Spawn
       condition: {fileID: 11400000, guid: f17f03686eae34fa2ad86344b0b46b3a, type: 2}
-  - stateName: Chase
-    state: {fileID: 11400000, guid: a8d281e34b02f4b1da5fa01626091ba9, type: 2}
-    nextStateElements:
-    - nextStateName: Attack
-      condition: {fileID: 11400000, guid: 83c01265835f3435d9cb739403017f54, type: 2}
-  - stateName: Attack
-    state: {fileID: 11400000, guid: 30c5ebcce6bd04d38b7145682056bed6, type: 2}
-    nextStateElements:
-    - nextStateName: Chase
-      condition: {fileID: 11400000, guid: 02a82077a11cf419ca6468d27525985b, type: 2}
+  - stateName: Spawn
+    state: {fileID: 11400000, guid: d38cae61d9c944e2f886b26a59cd2f42, type: 2}
+    nextStateElements: []
 --- !u!135 &135147343467229046
 SphereCollider:
   m_ObjectHideFlags: 1

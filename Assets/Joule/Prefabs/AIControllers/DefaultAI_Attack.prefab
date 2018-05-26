@@ -1,0 +1,101 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1011864290060448}
+  m_IsPrefabAsset: 1
+--- !u!1 &1011864290060448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4826920486044784}
+  - component: {fileID: 114661259782545128}
+  - component: {fileID: 135147343467229046}
+  - component: {fileID: 54844592498789066}
+  m_Layer: 11
+  m_Name: DefaultAI_Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4826920486044784
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011864290060448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &54844592498789066
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011864290060448}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!114 &114661259782545128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011864290060448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baf594996aa474021b84ed1c6ef3078c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
+  elements:
+  - stateName: Idle
+    state: {fileID: 11400000, guid: 79af540f090c540aea965598fccfc68b, type: 2}
+    nextStateElements:
+    - nextStateName: Chase
+      condition: {fileID: 11400000, guid: f17f03686eae34fa2ad86344b0b46b3a, type: 2}
+  - stateName: Chase
+    state: {fileID: 11400000, guid: a8d281e34b02f4b1da5fa01626091ba9, type: 2}
+    nextStateElements:
+    - nextStateName: Attack
+      condition: {fileID: 11400000, guid: 83c01265835f3435d9cb739403017f54, type: 2}
+  - stateName: Attack
+    state: {fileID: 11400000, guid: 30c5ebcce6bd04d38b7145682056bed6, type: 2}
+    nextStateElements:
+    - nextStateName: Chase
+      condition: {fileID: 11400000, guid: 02a82077a11cf419ca6468d27525985b, type: 2}
+--- !u!135 &135147343467229046
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011864290060448}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 30
+  m_Center: {x: 0, y: 0, z: 0}

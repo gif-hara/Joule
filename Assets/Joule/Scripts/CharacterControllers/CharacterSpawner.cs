@@ -35,7 +35,7 @@ namespace Joule.CharacterControllers
             this.Spawn();
         }
 
-        protected virtual Character Spawn()
+        public virtual Character Spawn()
         {
             var t = this.transform;
             var character = this.blueprint.Instantiate(t.position, t.rotation);
@@ -43,7 +43,15 @@ namespace Joule.CharacterControllers
 
             return character;
         }
-        
+
+        public Character Spawn(Vector3 position)
+        {
+            var character = this.Spawn();
+            character.CachedTransform.position = position;
+            return character;
+        }
+
+
 #if UNITY_EDITOR
         [SerializeField][HideInInspector]
         private GameObject imageModel;

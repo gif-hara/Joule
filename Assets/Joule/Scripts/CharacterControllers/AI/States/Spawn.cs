@@ -2,12 +2,14 @@
 using UniRx;
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 
 namespace Joule.CharacterControllers.AI
 {
     /// <summary>
     /// <see cref="Character"/>を生成するステート
     /// </summary>
+    [CreateAssetMenu(menuName = "Joule/AI/States/Spawn")]
     public sealed class Spawn : StateBase
     {
         [SerializeField]
@@ -24,7 +26,7 @@ namespace Joule.CharacterControllers.AI
                 {
                     foreach (var spawnRegulation in _this.regulations)
                     {
-                        spawnRegulation.Spawner.Spawn();
+                        spawnRegulation.Spawn();
                     }
                 })
                 .AddTo(this.runningEvents)
@@ -49,15 +51,28 @@ namespace Joule.CharacterControllers.AI
         {
             public CharacterSpawner Spawner;
 
-            public Vector3 Offset;
+            public float RandomRange;
 
             public SpawnRegulation Clone(AIControllerBase aiController)
             {
-                return new SpawnRegulation
+                var instance = new SpawnRegulation
                 {
                     Spawner = Instantiate(this.Spawner, aiController.Owner.CachedTransform),
-                    Offset = this.Offset
+                    RandomRange = this.RandomRange
                 };
+
+                instance.Spawner.transform.localPosition = Vector3.zero;
+                return instance;
+            }
+
+            public Character Spawn()
+            {
+                var r = new Vector3(
+                    Random.Range(-this.RandomRange, this.RandomRange),
+                    0.0f,
+                    Random.Range(-this.RandomRange, this.RandomRange)
+                    );
+                return this.Spawner.Spawn(this.Spawner.transform.position + r);
             }
         }
     }

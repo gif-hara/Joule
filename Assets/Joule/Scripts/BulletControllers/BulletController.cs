@@ -40,7 +40,7 @@ namespace Joule.BulletControllers
 
         private ObjectPool<BulletController> pool;
 
-        private Character owner;
+        private int ownerLayer;
 
         public Transform CachedTransform { get; private set; }
 
@@ -59,7 +59,7 @@ namespace Joule.BulletControllers
             var pool = Bundle.Get(this);
             var instance = pool.Rent();
             instance.pool = pool;
-            instance.owner = owner;
+            instance.ownerLayer = owner.gameObject.layer;
             instance.penetration = this.penetration;
             Observable.Timer(TimeSpan.FromSeconds(instance.duration))
                 .TakeUntilDisable(instance)
@@ -79,7 +79,7 @@ namespace Joule.BulletControllers
                 return;
             }
 
-            if (this.owner.gameObject.layer != character.gameObject.layer)
+            if (this.ownerLayer != character.gameObject.layer)
             {
                 this.OnCollideOpponent(character);
             }
