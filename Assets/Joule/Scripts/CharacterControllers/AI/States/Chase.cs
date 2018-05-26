@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices;
+using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Assertions;
 
@@ -26,7 +29,17 @@ namespace Joule.CharacterControllers.AI
             navMeshObstacle.enabled = false;
             navMeshAgent.enabled = true;
             navMeshAgent.speed = this.speed;
-            navMeshAgent.destination = aiController.Target.CachedTransform.position;
+
+            aiController.UpdateAsObservable()
+                .Where(_ => aiController.isActiveAndEnabled)
+                .Where(_ => navMeshAgent.enabled)
+                .SubscribeWithState2(navMeshAgent, aiController,
+                    (_, n, a) =>
+                    {
+                        n.destination = a.Target.CachedTransform.position;
+                    })
+                .AddTo(this.runningEvents)
+                .AddTo(aiController);
         }
 
         public override StateBase Clone(AIControllerBase aiController)

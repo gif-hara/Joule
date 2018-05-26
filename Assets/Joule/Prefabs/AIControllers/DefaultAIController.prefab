@@ -84,7 +84,9 @@ MonoBehaviour:
       condition: {fileID: 11400000, guid: 83c01265835f3435d9cb739403017f54, type: 2}
   - stateName: Attack
     state: {fileID: 11400000, guid: 30c5ebcce6bd04d38b7145682056bed6, type: 2}
-    nextStateElements: []
+    nextStateElements:
+    - nextStateName: Chase
+      condition: {fileID: 11400000, guid: 02a82077a11cf419ca6468d27525985b, type: 2}
 --- !u!135 &135147343467229046
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -95,5 +97,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10
+  m_Radius: 30
   m_Center: {x: 0, y: 0, z: 0}

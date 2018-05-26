@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0736c559750745918c5c177fe2b51a3, type: 3}
-  m_Name: DistanceTarget_Less5
+  m_Name: DistanceTarget_Greater30
   m_EditorClassIdentifier: 
-  evaluteType: 1
-  distance: 5
+  evaluteType: 0
+  distance: 30
